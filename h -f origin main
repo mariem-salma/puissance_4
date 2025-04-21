@@ -1,0 +1,17 @@
+[33mcommit 7792effc1bf1336022d7308b7c077a7b9d35978b[m
+Author: Maha Marhag <maha.merhag@gmail.com>
+Date:   Mon Apr 21 21:54:00 2025 +0200
+
+    Remove virtual environment from Git tracking
+
+[33mcommit 8c6825fbe1e69bc50ecc1e94db160aec5cc69504[m[33m ([m[1;32mtest[m[33m)[m
+Author: Maha Marhag <maha.merhag@gmail.com>
+Date:   Mon Apr 21 21:50:03 2025 +0200
+
+    Remove venv from repository
+
+[33mcommit a4cabd991928c716fcedb4e6e61ed72f8074a4e9[m
+Author: Maha Marhag <maha.merhag@gmail.com>
+Date:   Mon Apr 21 21:09:52 2025 +0200
+
+    Initial commit: Connect4 game with AI and online multiplayer
