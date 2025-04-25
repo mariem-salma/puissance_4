@@ -4,11 +4,6 @@ from env import Puissance4Env
 model = PPO.load("puissance4_ppo")
 env = Puissance4Env()
 obs = env.reset()
-
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/main
 done = False
 while not done:
     action, _ = model.predict(obs)
