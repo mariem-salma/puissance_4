@@ -1,7 +1,7 @@
 import socket
 import threading
 
-HOST = '0.0.0.0'  # Pour accepter toutes les connexions
+HOST = '127.0.0.1'  # Use localhost for testing
 PORT = 12345
 
 clients = []

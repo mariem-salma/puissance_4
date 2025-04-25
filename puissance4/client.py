@@ -4,7 +4,7 @@ import threading
 # Connexion au serveur
 def start_network_connection(on_receive_move):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.connect(("172.31.240.1", 12345))  # L'IP du serveur ici, localhost pour les tests
+    client_socket.connect(("127.0.0.1", 12345))  # L'IP du serveur ici, localhost pour les tests
     player_id = client_socket.recv(1024).decode()
     print(f"Connecté comme {player_id}")
 

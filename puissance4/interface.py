@@ -153,7 +153,7 @@ def start_network_connection():
     global client_socket, player_id
 
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.connect(("172.31.240.1", 12345))  # ⚠️ mets l’IP du serveur ici si en réseau
+    client_socket.connect(("127.0.0.1", 12345))  # ⚠️ mets l’IP du serveur ici si en réseau
     player_id = client_socket.recv(1024).decode()
     print("Connecté comme", player_id)
 
@@ -234,14 +234,16 @@ def start_network_game():
 
 
 def choisir_mode(selected_mode):
-    global mode
+    global mode, status_label
     mode = selected_mode
     menu_window.destroy()
-
+    status_label = tk.Label(root)
+    status_label.pack()
     if mode == "pvp_online":
         start_network_game()
 
     lancer_jeu()
+
 # Interface principaley
 root = tk.Tk()
 root.title("Puissance 4")
