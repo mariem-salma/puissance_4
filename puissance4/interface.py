@@ -232,16 +232,16 @@ def start_network_game():
     # Mets à jour le statut du jeu si nécessaire
     status_label.config(text=f"Connecté comme {player_id}, à toi de jouer.")
 
+
 def choisir_mode(selected_mode):
     global mode
     mode = selected_mode
     menu_window.destroy()
-    lancer_jeu()
 
     if mode == "pvp_online":
         start_network_game()
 
-
+    lancer_jeu()
 # Interface principaley
 root = tk.Tk()
 root.title("Puissance 4")
