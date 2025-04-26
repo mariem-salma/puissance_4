@@ -56,14 +56,18 @@ def handle_click(event):
 
     draw_board()
 
+    # 👉 Send the move to the opponent if in online mode
+    if mode == "pvp_online" and client_socket:
+        client_socket.sendall(str(col).encode())
+
     # Vérifie victoire ou match nul après le coup
     if game.winner:
         winner_text = (
             "🎉 Tu as gagné !" if mode == "pve"
-            else f"🎉 Joueur {current_player} a gagné !"
+            else f"🎉 Joueur {game.winner} a gagné !"
         )
         status_label.config(text=winner_text)
-        canvas.unbind("<Button-1>")
+        canvas.unbind("<Button-1>")  # prevent more moves
         return
 
     elif game.is_draw():
@@ -71,29 +75,13 @@ def handle_click(event):
         canvas.unbind("<Button-1>")
         return
 
-    # 🎮 Mode Humain vs Humain en ligne
-    if mode == "pvp_online":
-        # Vérifie si c’est le bon joueur
-        if ((player_id == "PLAYER_1" and current_player != 1) or
-            (player_id == "PLAYER_2" and current_player != 2)):
-            return
-
-        try:
-            client.send_move(client_socket, col)  # Envoie le coup au serveur
-        except:
-            status_label.config(text="❌ Erreur réseau")
-            return
-
-        current_player = 2 if current_player == 1 else 1
-        status_label.config(text="🕒 En attente de l'autre joueur")
-
     # 🤖 Mode Humain vs IA
     elif mode == "pve":
         current_player = 2
         status_label.config(text="🤖 L'IA réfléchit...")
-        root.after(500, jouer_ia)  # Ajoute un petit délai pour l'effet
+        root.after(500, jouer_ia)
 
-    # 👥 Mode Humain vs Humain local (sur le même PC)
+    # 👥 Mode Humain vs Humain local
     elif mode == "pvp_local":
         current_player = 2 if current_player == 1 else 1
         status_label.config(

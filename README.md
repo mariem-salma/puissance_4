@@ -41,11 +41,19 @@ Ce projet est une implémentation de Puissance 4 en Python avec plusieurs modes 
 
 ## Utilisation
 
-1. **Lancer le serveur** (pour le mode en ligne) :
+1. **Lancer le serveur pour le mode en ligne** :
    ```bash
    python server.py
    ```
-2. **Lancer le jeu** :
+2. **Changer l'adresse IP pour le mode en ligne** :  
+
+   Dans client.py et interface.py, remplacez l'adresse IP par l'adresse IP actuelle du serveur :
+
+      ```bash
+   client_socket.connect(("IP_DU_SERVEUR", 12345))  # Remplacez IP_DU_SERVEUR par l'adresse IP du serveur   
+   ```
+
+3. **Lancer le jeu** :
    ```bash
    python interface.py
    ```
